@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Widget
+from django.views.generic import DeleteView, DetailView, CreateView
 
-# Create your views here.
+
+def widget_home(request):
+    widget_list = Widget.objects.get()
+    context = {
+        'widget_list': widget_list
+    }
+    return render(request, 'index.html',context)
